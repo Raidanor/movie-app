@@ -37,17 +37,17 @@ const _layout = () => {
             tabBarShowLabel: false,
             tabBarItemStyle: {
                 width: '100%',
-                height:'100%',
+                height:'90%',
                 justifyContent: 'center',
                 alignItems: 'center'
             },
             tabBarStyle: {
                 backgroundColor: '#0f0D23',
                 borderRadius: 50,
-                marginHorizontal: 10,
-                marginBottom: 36,
-                height: 52,
-                borderWidth: 1,
+                marginHorizontal: 0,
+                marginBottom: 20,
+                height: 50,
+                borderWidth: 0,
                 borderColor: '#0f0d23'
             }
         }}    

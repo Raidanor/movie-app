@@ -3,19 +3,21 @@ import React from 'react'
 import { icons } from '@/constants/icons'
 
 interface Props {
-    placeholder: String;
-    onPress: () => void;
+    placeholder: string;
+    onPress?: () => void;
+    value: string;
+    onChangeText: (text: string) => void;
 }
 
-const SearchBar = ({placeholder, onPress}: Props) => {
+const SearchBar = ({placeholder, onPress, value, onChangeText}: Props) => {
   return (
     <View className='flex-row items-center bg-dark-200 rounded-full px-5 py-4'>
         <Image source={icons.search} className="size-5" resizeMode="contain" tintColor="#ab8bff" />
         <TextInput 
             onPress={onPress}
             placeholder={placeholder.toString()}
-            value=""
-            onChangeText={() => {}}
+            value={value}
+            onChangeText={onChangeText}
             placeholderTextColor="#ab85db"
             className='ml-1 fkex-1 text-white'
         />
