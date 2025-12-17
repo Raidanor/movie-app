@@ -1,4 +1,4 @@
-import {Client, Databases, ID, Query} from "react-native-appwrite"
+import {Client, Databases, ID, Query, TablesDB} from "react-native-appwrite"
 
 
 // track searches by user
@@ -9,7 +9,7 @@ const client = new Client()
     .setEndpoint("https://cloud.addwrite.io/v1")
     .setProject(process.env.EXPO_PUBLIC_APPWRITE_PROJECT_ID!)
 
-const database = new Databases(client)
+const database = new TablesDB(client)
 
 
 export const updateSearchCount = async(query: string, movie: Movie) => {
@@ -18,33 +18,41 @@ export const updateSearchCount = async(query: string, movie: Movie) => {
     // if no document is found, create a new record in Appwrite database
 
     try {
-        const result = await database.listDocuments(DATABASE_ID, TABLE_ID, [
-            Query.equal('searchTerm', query)
-        ])
+        const result = await database.listRows({
+            databaseId: DATABASE_ID,
+            tableId: TABLE_ID,
+            queries: [ Query.equal('searchTerm', [query])]
+        })
+        console.log("result", result)
 
 
+        // if (result.rows.length == 0){
+        //     const existingMovie = result.rows[0]
 
-        if (result.documents.length == 0){
-            const existingMovie = result.documents[0]
-
-            await database.updateDocument(
-                DATABASE_ID, 
-                TABLE_ID,
-                existingMovie.$id,
-                {
-                    count: existingMovie.count + 1
-                }
-            )
-        } else {
-            await database.createDocument(DATABASE_ID, TABLE_ID, ID.unique(), 
-            {
-                title: movie.title,
-                searchTerm: query,
-                movie_id: movie.id,
-                count: 1,
-                poster_url: `https://image.tmdb.org/t/p/w500${movie.poster_path}`
-            })
-        }
+        //     await database.updateRow({
+        //         databaseId: DATABASE_ID,
+        //         tableId: TABLE_ID,
+        //         rowId: existingMovie.$id,
+        //         data: {
+        //             count: existingMovie.count + 1,
+        //         }
+        //     } 
+        //     )
+        // } else {
+        //     await database.createRow({
+        //         databaseId: DATABASE_ID,
+        //         tableId: TABLE_ID,
+        //         rowId: ID.unique(),
+        //         data: {
+        //             title: movie.title,
+        //             searchTerm: query,
+        //             movie_id: movie.id,
+        //             count: 1,
+        //             poster_url: `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+        //         }
+        //     } 
+        //     )
+        // }
     } catch (error) {
         console.log(error)
         throw error
