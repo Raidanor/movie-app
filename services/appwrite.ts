@@ -1,4 +1,4 @@
-import {Client, Databases, ID, Query, TablesDB} from "react-native-appwrite"
+import { Client, Databases, ID, Query, TablesDB } from "react-native-appwrite"
 
 
 // track searches by user
@@ -6,10 +6,10 @@ const DATABASE_ID = process.env.EXPO_PUBLIC_APPWRITE_DATABASE_ID!
 const TABLE_ID = process.env.EXPO_PUBLIC_APPWRITE_TABLE_ID!
 
 const client = new Client()
-    .setEndpoint("https://cloud.addwrite.io/v1")
+    .setEndpoint("https://nyc.cloud.appwrite.io/v1")
     .setProject(process.env.EXPO_PUBLIC_APPWRITE_PROJECT_ID!)
 
-const database = new TablesDB(client)
+const tablesDB = new TablesDB(client)
 
 
 export const updateSearchCount = async(query: string, movie: Movie) => {
@@ -18,12 +18,13 @@ export const updateSearchCount = async(query: string, movie: Movie) => {
     // if no document is found, create a new record in Appwrite database
 
     try {
-        const result = await database.listRows({
+        
+        const result = await tablesDB.listRows({
             databaseId: DATABASE_ID,
             tableId: TABLE_ID,
             queries: [ Query.equal('searchTerm', [query])]
         })
-        console.log("result", result)
+        console.log("result: ", result)
 
 
         // if (result.rows.length == 0){
