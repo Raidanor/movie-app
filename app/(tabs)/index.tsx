@@ -10,9 +10,13 @@ import { fetchMovies } from "@/services/api";
 import MovieCard from "@/components/MovieCard";
 import { getTrendingMovies } from "@/services/appwrite";
 import TrendingCard from "@/components/TrendingCard";
+import { useEffect } from "react";
+import * as NavigationBar from 'expo-navigation-bar';
 
 export default function Index() {
     const router = useRouter()
+
+
 
     const { 
         data: trendingMovies, 
@@ -98,19 +102,8 @@ export default function Index() {
                             </FlatList>
                         </>
                     </View>
-                    
                 )}
-                
-                <View className="flex-1 mt-5">
-                    <SearchBar 
-                        onPress={() => router.push("/search")}
-                        placeholder="Search for a movie"
-                    />
-                </View>
-
             </ScrollView>
-            
-
         </View>
     );
 }

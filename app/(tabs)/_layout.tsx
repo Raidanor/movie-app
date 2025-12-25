@@ -6,7 +6,8 @@ import { icons } from '@/constants/icons'
 
 const TabIcon = ({focused, icon, title}: any) => {
     if (focused) {
-        return (<ImageBackground 
+        return (
+        <ImageBackground 
             source={images.highlight}
             className='flex flex-row w-full flex-1 min-w-[112px] 
             min-h-14 mt-5 justify-center items-center rounded-full overflow-hidden'

@@ -1,8 +1,17 @@
 import { Stack } from "expo-router";
 import './globals.css'
 import { StatusBar } from "react-native";
+import * as NavigationBar from 'expo-navigation-bar';
+import { useEffect } from "react";
 
 export default function RootLayout() {
+
+    useEffect(() => {
+        NavigationBar.setVisibilityAsync("hidden")
+        console.log("visibility set")
+    }, [])
+
+
     return (
         <>
             <Stack >
@@ -12,7 +21,7 @@ export default function RootLayout() {
                     options={{headerShown: false}}
                 />
                 <Stack.Screen 
-                    name="movie/[id]" 
+                    name="movies/[id]"
                     options={{headerShown: false}}
                 />
 

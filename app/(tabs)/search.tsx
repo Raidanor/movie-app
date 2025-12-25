@@ -44,8 +44,8 @@ const search = () => {
     }, [movies])
 
     return (
-        <View className='flex-1 bg-primary'>
-            <Image source={images.bg} className='flex-1 absolute w-full z-0' resizeMode='cover'/>
+        <View className='flex-1 bg-primary bg-cover min-h-full'>
+            <Image source={images.bg} className='absolute min-w-full z-0' />
 
             <FlatList 
                 data={movies} 
