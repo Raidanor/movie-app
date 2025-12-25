@@ -44,8 +44,8 @@ const search = () => {
     }, [movies])
 
     return (
-        <View className='flex-1 bg-primary bg-cover min-h-full'>
-            <Image source={images.bg} className='absolute min-w-full z-0' />
+        <View className='flex-1 bg-primary bg-cover min-h-full -mt-10'>
+            <Image source={images.bg} className='absolute min-w-full z-0 mt-10' />
 
             <FlatList 
                 data={movies} 
@@ -65,10 +65,10 @@ const search = () => {
                             <Image source={icons.logo} className='w-12 h-10' />
 
                         </View>
-                        <View className='my-5 '>
+                        <View className='mt-10 flex-1'>
 
                             <SearchBar
-                                placeholder='Search movies...' 
+                                placeholder='Search for a movie' 
                                 value = {searchQuery}
                                 onChangeText={(text: string) => setSearchQuery(text)}
                             />

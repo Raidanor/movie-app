@@ -8,13 +8,12 @@ export default function RootLayout() {
 
     useEffect(() => {
         NavigationBar.setVisibilityAsync("hidden")
-        console.log("visibility set")
     }, [])
 
 
     return (
         <>
-            <Stack >
+            <Stack>
                 <StatusBar hidden={true} />
                 <Stack.Screen 
                     name="(tabs)" 

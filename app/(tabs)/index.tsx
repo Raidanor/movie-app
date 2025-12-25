@@ -10,8 +10,6 @@ import { fetchMovies } from "@/services/api";
 import MovieCard from "@/components/MovieCard";
 import { getTrendingMovies } from "@/services/appwrite";
 import TrendingCard from "@/components/TrendingCard";
-import { useEffect } from "react";
-import * as NavigationBar from 'expo-navigation-bar';
 
 export default function Index() {
     const router = useRouter()

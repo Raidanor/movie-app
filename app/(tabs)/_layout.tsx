@@ -44,11 +44,11 @@ const _layout = () => {
             },
             tabBarStyle: {
                 backgroundColor: '#0f0D23',
-                borderRadius: 50,
+                borderRadius: 0,
                 marginHorizontal: 0,
-                marginBottom: 20,
-                height: 50,
-                borderWidth: 0,
+                marginBottom: 0,
+                height: "auto",
+                borderWidth: 1,
                 borderColor: '#0f0d23'
             }
         }}    
